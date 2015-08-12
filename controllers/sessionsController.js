@@ -47,8 +47,8 @@ function isLoggedIn (req, res, next) {
 // router.get('/logout', function
 
 module.exports = {
-  sessionsIndex: sessionNew,
-  sessionsCreate: sessionCreate,
-  sessionsShow:   sessionShow,
-  sessionsIndex:  sessionDelete
+  sessionNew: sessionNew,
+  sessionCreate: sessionCreate,
+  sessionShow:   sessionShow,
+  sessionDelete:  sessionDelete
 };
