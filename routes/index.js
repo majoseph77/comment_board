@@ -19,8 +19,8 @@ router.get('/logout', sessionsController.sessionDelete);
 router.get('/secret', sessionsController.sessionShow);
 
 //renders user controller
-router.get('/register', usersController.userNew);
-router.post('/register', usersController.userCreate);
+router.get('/register', usersController.usersNew);
+router.post('/register', usersController.usersCreate);
 module.exports = router;
 
 // router.get('/register', function (req, res) {

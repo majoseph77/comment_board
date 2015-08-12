@@ -3,6 +3,7 @@ var passport = require('passport');
 var User = require('../models/User');
 var router = express.Router();
 
+
 //GET '/login'
 function sessionNew  (req, res) {
   res.render('auth/login', {user : req.user});
