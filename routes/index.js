@@ -2,11 +2,25 @@ var express = require('express');
 var passport = require('passport');
 var User = require('../models/User');
 var router = express.Router();
+var usersController = require('../controllers/users');
+var sessionsController = require('../controllers/sessions');
+var commentsController = require('../controllers/comments');
+
 
 /* GET home page. */
 router.get('/', function (req, res) {
   res.render('index', {user: req.user});
 });
+
+//renders sessions controller
+router.get('/login', sessionsController.sessionNew);
+router.post('/login', sessionsController.sessionCreate);
+router.get('/logout', sessionsController.sessionDelete);
+router.get('/secret', sessionsController.sessionShow);
+
+//renders user controller
+
+module.exports = router;
 
 // router.get('/register', function (req, res) {
 //   res.render('auth/register');

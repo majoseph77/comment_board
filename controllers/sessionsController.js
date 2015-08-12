@@ -3,12 +3,13 @@ var passport = require('passport');
 var User = require('../models/User');
 var router = express.Router();
 
-
-router.get('/login', function (req, res) {
+//GET '/login'
+function sessionNew = router.get('/login', function (req, res) {
   res.render('auth/login', {user : req.user});
 });
 
-router.post('/login', passport.authenticate(
+//Post actually logs in
+function sessionCreate = router.post('/login', passport.authenticate(
   'local',
   {
     failureRedirect: '/login'
@@ -21,12 +22,14 @@ router.post('/login', passport.authenticate(
   }
 );
 
-router.get('/logout', function (req, res) {
+//GET '/logout'
+function sessionDelete = router.get('/logout', function (req, res) {
   req.logout();
   res.redirect('/');
 });
 
-router.get('/secret', isLoggedIn, function (req, res) {
+//GET /'secret'
+function sessionShow = router.get('/secret', isLoggedIn, function (req, res) {
   res.render('secret', {user: req.user});
 });
 
@@ -38,3 +41,10 @@ function isLoggedIn(req, res, next) {
   // if they aren't redirect them to the login page
   res.redirect('/login');
 }
+
+module.exports = {
+  sessionsIndex: sessionNew,
+  sessionsCreate: sessionCreate,
+  sessionsShow:   sessionShow,
+  sessionsIndex:  sessionDelete
+};
