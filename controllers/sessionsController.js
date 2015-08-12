@@ -9,18 +9,18 @@ function sessionNew  (req, res) {
 };
 
 //Post actually logs in
-function sessionCreate = router.post('/login', (passport.authenticate
-  'local',
+function sessionCreate (req,res) {passport.authenticate,
+  'local'}
   {
     failureRedirect: '/login'
-  }),
-  function (req, res, next) {
+  }
+  function sessionCreate (req, res, next) {
     req.session.save(function (err) {
       if (err) return next(err);
       res.redirect('/');
     });
-  }
-);
+  };
+
 
 //GET '/logout'
 function sessionDelete  (req, res) {
@@ -29,12 +29,12 @@ function sessionDelete  (req, res) {
 };
 
 //GET /'secret'
-function sessionShow = router.get('/secret', isLoggedIn, function (req, res) {
+function sessionShow (req, res) {isLoggedIn,
   res.render('secret', {user: req.user});
-});
+};
 
 // middleware to make sure a user is logged in
-function isLoggedIn(req, res, next) {
+function isLoggedIn (req, res, next) {
   // if user is authenticated in the session, carry on
   if (req.isAuthenticated())
     return next();
